@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dto">
+
+	<select id="login" resultType="ClassDTO" parameterType="string">
+        select * from login 
+        where userId = #{userId} 
+    </select>
+	
+	<select id="selectAllMember" resultType="ClassDTO">
+     select * from login order by userId asc
+	</select>
+	
+	<insert id="insertByMember" parameterType="ClassDTO">
+	   insert into login *
+	   values( #{userId} , #{userPasswd} , #{userName} , #{gender} , #{birth}, #{phone}, #{address}, #{email}, '', '', #{certificateData} , '', '', '')
+   </insert>
+   
+	<delete id="deleteByMember" parameterType="string">
+	 delete 
+	 from login
+	 where userId = #{userId}
+	</delete>
+
+      <delete id="deleteByAllMember" parameterType="arraylist">
+    delete from login 
+    where userId IN
+    <foreach item="item"  collection="list" open="("
+    separator="," close=")">
+    #{item}    
+    </foreach>
+<!--     <where>
+    <foreach collection="list" item="xx" index="index" > 
+        or prodId = #{xx}
+   </foreach>
+     </where> -->
+  </delete>
+</mapper>

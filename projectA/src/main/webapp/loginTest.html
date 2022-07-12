@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	// 팝업창 가운데 출력
+	function popUp() {
+		var child;
+	 	var width=1000;
+		var height=800;
+		var left = Math.ceil(( window.screen.width - width )/2);
+		var top = Math.ceil(( window.screen.height - height )/2);  
+		child= window.open("login.html", "childName", "width="+width+", height="+height+", left="+left+",top="+top);
+	}
+	
+</script>
+</head>
+<body>
+로그인 전 html입니다.
+	<div>
+		<button onclick="popUp()">로그인 바로가기</button>
+ 	</div>
+</body>
+</html>
